@@ -33,9 +33,8 @@ func FromInt32(i int32) Vec {
 	return v
 }
 
-// Ignore the neg, then put it back.
-// The scalar-product of two integers' bitvectors says nothing about the neg bit,
-// and the essence of scalar-product is a absolute value of two vectors.
+// Ignore the neg. TODO: confirming about how to deal with MSB neg when dot producting.
+// The scalar-product of two integers' bitvectors says nothing about the neg bit.
 func Dot(lvec, rvec Vec) int32 {
 	r := lvec[1:].Dot(rvec[1:])
 	return int32(r)
