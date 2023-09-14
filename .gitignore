@@ -1,0 +1,14 @@
+telepresence.log
+.envrc
+vendor/
+bin/
+.idea/
+.vscode/
+*.swp
+**/.DS_Store
+
+__py*
+*.tmp
+ghz
+
+.obsidian
