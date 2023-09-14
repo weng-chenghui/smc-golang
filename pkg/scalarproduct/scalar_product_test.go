@@ -75,11 +75,9 @@ func TestScalarProduct(t *testing.T) {
 				tt.Fatalf("wrong Bob: %s", cmp.Diff(gotBob, tc.shouldBeBobResult))
 			}
 
-			// "A Practical Approach to Solve Secure Multi-Party Computation"
+			// In the original paper:
 			//
-			// In this original paper:
-			//
-			// 1. Numbers of Xa, Xb, ra are int ge zero.
+			// 1. Values of Xa, Xb, ra are int greater than or equal to zero.
 			// 2. AliceGot: Xa . Xb + v, BobGot: v, AliceGot - BobGot = Xa . Xb
 			//    while v = v' - rb, and v' is the generated one like yb` here,
 			//    but the sign is changed.

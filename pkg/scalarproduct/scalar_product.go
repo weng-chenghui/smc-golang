@@ -1,7 +1,19 @@
 package scalarproduct
 
-// Note: in this version we assume domain is 32.
+// The original paper:
+//
+//  Wenliang Du and Zhijun Zhan. 2002.
+//
+//  A practical approach to solve Secure Multi-party Computation problems.
+//
+//  In Proceedings of the 2002 workshop on New security paradigms (NSPW '02).
+//  Association for Computing Machinery, New York, NY, USA, 127–135.
+//  https://doi.org/10.1145/844102.844125
+//
+// --------
+// Note: in this implementation version we assume domain is 32.
 // Since we use int32.
+//
 
 import (
 	"github.com/quartercastle/vector"
