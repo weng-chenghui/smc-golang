@@ -11,14 +11,12 @@ package scalarproduct
 //  https://doi.org/10.1145/844102.844125
 //
 // --------
-// Note: in this implementation version we assume domain is 32.
+// Note: in this implementation version we assume domain is 2^32.
 // Since we use int32.
 //
 
 import (
 	"github.com/quartercastle/vector"
-
-	twos "github.com/weng-chenghui/smc-golang/pkg/twoscomplement"
 )
 
 type Vec = vector.Vector
@@ -104,7 +102,7 @@ func (a *AliceLocal) Step1GetToBob_Xa_() Vec {
 }
 
 func (a *AliceLocal) Step2Set_ya() {
-	RaXb_ := int32(twos.Dot(a.Ra, a.Xb_))
+	RaXb_ := int32(a.Ra.Dot(a.Xb_))
 	a.ya = a.t - RaXb_ + a.ra
 }
 
@@ -117,11 +115,12 @@ func (b *BobLocal) Set_Xa_(v Vec) {
 }
 
 func (b *BobLocal) Step1GetToAlice_Xb_() Vec {
-	return b.Xb.Add(b.Rb)
+	result := b.Xb.Add(b.Rb)
+	return result
 }
 
 func (b *BobLocal) Step2GetToAlice_t() int32 {
-	Xa_Xb := int32(twos.Dot(b.Xa_, b.Xb))
+	Xa_Xb := int32(b.Xa_.Dot(b.Xb))
 	return Xa_Xb + b.rb - b.yb
 }
 
@@ -131,7 +130,7 @@ func (b *BobLocal) GetResult() int32 {
 
 // rb = Ra . Rb - ra
 func (c *CommodityLocal) Get_rb() int32 {
-	RaRb := int32(twos.Dot(c.Ra, c.Rb))
+	RaRb := int32(c.Ra.Dot(c.Rb))
 	return RaRb - c.ra
 }
 
